@@ -1,0 +1,35 @@
+{% extends 'layout.html' %} 
+
+{% block title %}
+<title>Thêm mới Note</title>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<br>
+
+<h2 style="color: gold">Thêm Note mới</h2>
+
+<form method="post" action="{{url_for('create')}}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="title">Tên Note </label>
+    <input type="text" class="form-control" placeholder="Tiêu đề của ghi chú" name="note_name" id="note_name"/>
+    <label for="author">Tác giả </label>
+    <input type="text" class="form-control" placeholder="Tên tác giả" name="author" id="author"/>
+    <label for="content">Nội dung ghi chú </label>
+    <textarea name="content" class="form-control" id="content" placeholder="Nhập nội dung ghi chú"></textarea> 
+    <label for="tag">Thời gian nhắc </label>
+    <input type="datetime" class="form-control"  placeholder="Nhập thời gian cần nhắc" name="date_created" id="date_created"/>
+        </br>
+    <button class="btn btn-success" type="submit">
+        Tạo ghi chú mới
+    </button>
+
+</form>
+
+
+
+{% endblock %}

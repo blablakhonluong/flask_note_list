@@ -1,0 +1,52 @@
+{% extends 'layout.html' %} 
+
+{% block title %}
+<title>Danh sách Note</title>
+
+{% endblock %}
+
+
+
+{% block content %}
+<h2 style="text-align:center;">Danh sách Note cần làm</h2><br><br>
+
+
+
+<a style="background-color: cyan; color: black" class="btn btn-primary" href="{{url_for('create')}}"><i class="fa fa-plus"></i> Tạo Note mới</a>
+    <table class="table table-dark">
+       <tr>
+        <th>Số thứ tự</th>
+        <th>Tác giả của Note </th>
+        <th>Note Name</th>
+        <th>Thời gian nhắc </th>
+        <th>Nội dung của Note</th>
+        <th>Action 1</th>
+        <th>Action 2</th>
+    </tr> 
+    {% for data in data%}
+    <tr>
+        <td>{{data.id}}</td>
+        <td>{{data.author}}</td>
+        <td>{{data.note_name}}</td>
+        <td id="time">{{data.date_created}}</td>
+        <td>{{data.content}}</td>
+        <td><form method="post" action="{{url_for('delete',id=data.id)}}"> 
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-danger"> <i class="fa fa-trash-o" aria-hidden="true"></i> Xóa ghi chú</button>
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{{url_for('edit',id=data.id)}}"><i class="fa fa-edit"></i> Cập nhật ghi chú</a>
+        </td>
+      </form></td>
+    </tr>
+    {% endfor %}
+
+
+
+    </table>
+
+    
+
+
+{% endblock %}
+

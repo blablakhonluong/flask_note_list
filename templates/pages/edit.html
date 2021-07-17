@@ -1,0 +1,67 @@
+{% extends 'layout.html' %} 
+
+{% block title %}
+<title>Chỉnh sửa ghi chú</title>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<br>
+
+<h2 style="color: gold">Chỉnh sửa Ghi Chú số {{edit_data.id}}</h2>
+
+<form action="{{url_for('create')}}" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <div class="form-group">
+
+        <label for="title">Tên Note </label>
+        <input type="text" class="form-control" placeholder="Tiêu đề của ghi chú" name="note_name" id="note_name"/>
+
+
+    </div>
+
+
+     <div class="form-group">
+
+        <label for="author">Tác giả </label>
+        <input type="text" class="form-control" placeholder="Tên tác giả" name="author" id="author"/>
+
+
+    </div>
+
+
+     <div class="form-group">
+
+
+        <label for="content">Nội dung ghi chú </label>
+        <textarea name="content" class="form-control" id="content" placeholder="Nhập nội dung ghi chú"></textarea> 
+
+    </div>
+
+    <div class="form-group">
+        <label for="tag">Thời gian nhắc </label>
+        <input type="datetime" class="form-control"  placeholder="Nhập thời gian cần nhắc" name="date_created" id="date_created"/>
+    </div>
+
+
+
+    <div class="form-group">
+
+
+        <button class="btn btn-success" type="submit">
+            Tạo ghi chú mới
+        </button>
+
+
+    </div>
+
+
+ </form>
+
+
+
+{% endblock %}
